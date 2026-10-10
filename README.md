@@ -14,6 +14,7 @@ AI agents write more and more of our code. The programmer's role moves from writ
 
 ```markdown
 # IKWH - I Know What's Happening
+> The programmer's own answers about this codebase, typed by hand. What is this file? https://github.com/mmnaderi/IKWH
 
 ## 2026-10-10
 

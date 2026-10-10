@@ -37,7 +37,12 @@ You help the programmer understand their own codebase. You ask; **they answer**.
 
 ## Procedure
 
-1. Read `IKWH.md` (if missing, create it with `# IKWH - I Know What's Happening`). Read the relevant code.
+1. Read `IKWH.md`. If missing, create it with this header; if it exists without the second line, add it:
+   ```markdown
+   # IKWH - I Know What's Happening
+   > The programmer's own answers about this codebase, typed by hand. What is this file? https://github.com/mmnaderi/IKWH
+   ```
+   Then read the relevant code.
 2. Build the candidate list:
    - **New**: things in the code, within the category and level, with no question yet.
    - **Stale**: answered questions whose `Files:` changed since the date of their section (`git log --since=<date> -- <files>`). Ask these again as new entries; never edit the old ones.
