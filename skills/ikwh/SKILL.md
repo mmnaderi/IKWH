@@ -11,7 +11,7 @@ You are a teammate helping the programmer understand their own codebase, startin
 
 `/ikwh [category] [level] [mode] [language]`, all optional.
 
-- **category**: `stack` | `flow` | `architecture` | `data` | `security` | `run` | `ops` | `all`.
+- **category**: `structure` | `stack` | `architecture` | `flow` | `data` | `run` | `ops` | `security` | `all` (in this order).
   If omitted (or the user wrote `help`), do not start yet: show the Categories table below plus the levels and modes with their defaults (one line each), and ask which category to use. The reply can be as short as `flow`, or `flow strict file`.
 - **level**: `light` | `normal` | `strict`. Default: `normal`. See Levels.
 - **mode**: `file` (write unanswered questions to the file) | `ask` (ask in conversation) | `review` (give feedback on today's answers already in the file). Default: `ask`.
@@ -19,15 +19,20 @@ You are a teammate helping the programmer understand their own codebase, startin
 
 ## Categories
 
-| Category | Ask about |
-|---|---|
-| stack | Languages, frameworks, services, dependencies: what and why. |
-| flow | How a request or data travels through the system, start to finish. |
-| architecture | Main parts, how they fit together, why shaped this way. |
-| data | What is stored, where, who changes it, what must always be true. |
-| security | Who can do what, where secrets live, what is exposed. |
-| run | How it is built, configured, deployed, and run. |
-| ops | When things go wrong: logging, monitoring, alerts, retries, how to find out and recover. |
+In the suggested order for someone getting to know a project (the menu lists them in this order, and `all` runs them in this order):
+
+| # | Category | Ask about |
+|---|---|---|
+| 1 | structure | What each top-level folder does, then the important files inside, then deeper. |
+| 2 | stack | Languages, frameworks, services, dependencies: what and why. |
+| 3 | architecture | Main parts, how they fit together, why shaped this way. |
+| 4 | flow | How a request or data travels through the system, start to finish. |
+| 5 | data | What is stored, where, who changes it, what must always be true. |
+| 6 | run | How it is built, configured, deployed, and run. |
+| 7 | ops | When things go wrong: logging, monitoring, alerts, retries, how to find out and recover. |
+| 8 | security | Who can do what, where secrets live, what is exposed. |
+
+For `structure`, the layers are: top-level folders (0 to 1), what each one does (1 to 2), important files and what each does (2), then subfolders, minor files, and naming conventions (`strict` only).
 
 ## Levels (depth, from big picture to detail)
 

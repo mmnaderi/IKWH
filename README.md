@@ -77,15 +77,18 @@ The level is how deep the questions go. The cap of 5 per run applies to all leve
 
 Each category is an argument of the skill, e.g. `/ikwh flow`. Run `/ikwh` alone (or `/ikwh help`) and it lists the categories, levels, and modes and asks which one you want:
 
-| Usage | Asks about |
-|---|---|
-| `/ikwh stack` | Languages, frameworks, services, and dependencies: what we use and why. |
-| `/ikwh flow` | How a request or piece of data travels through the system, start to finish. |
-| `/ikwh architecture` | The main parts, how they fit together, and why they are shaped this way. |
-| `/ikwh data` | What data is stored, where, who can change it, and what must always be true. |
-| `/ikwh security` | Who can do what, where secrets live, and what is exposed. |
-| `/ikwh run` | How it is built, configured, deployed, and run. |
-| `/ikwh ops` | What happens when things go wrong: logging, monitoring, alerts, retries, and how you find out and recover. |
+| # | Usage | Asks about |
+|---|---|---|
+| 1 | `/ikwh structure` | What each folder does, then the important files inside, then deeper. |
+| 2 | `/ikwh stack` | Languages, frameworks, services, and dependencies: what we use and why. |
+| 3 | `/ikwh architecture` | The main parts, how they fit together, and why they are shaped this way. |
+| 4 | `/ikwh flow` | How a request or piece of data travels through the system, start to finish. |
+| 5 | `/ikwh data` | What data is stored, where, who can change it, and what must always be true. |
+| 6 | `/ikwh run` | How it is built, configured, deployed, and run. |
+| 7 | `/ikwh ops` | What happens when things go wrong: logging, monitoring, alerts, retries, and how you find out and recover. |
+| 8 | `/ikwh security` | Who can do what, where secrets live, and what is exposed. |
+
+The order is a path: if you are new to a project, go from 1 to 8. `/ikwh all` runs them in this order.
 
 ## Name
 
@@ -93,6 +96,7 @@ Each category is an argument of the skill, e.g. `/ikwh flow`. Run `/ikwh` alone 
 
 ## Version
 
+- **v0.1.6** — Added the `structure` category and put the categories in a learning order (1 to 8).
 - **v0.1.5** — Removed the `Files:` line; `Question` / `Answer` labels are full words in the chosen language; added the "When to use it" section.
 - **v0.1.4** — Feedback after every answer (right, missing, key points; optional rewrite) and a `review` mode.
 - **v0.1.3** — Top-down questions (big picture first), levels by depth (HLD by default), a teammate tone, a first-run map, and a header line in `IKWH.md`.
