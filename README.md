@@ -37,7 +37,7 @@ No AI-written answers, no pasted text, no AI "polishing".
 
 ## The skill
 
-The skill lives in [`skills/ikwh/SKILL.md`](skills/ikwh/SKILL.md). Usage: `/ikwh [category] [level] [file|ask] [lang=<language>]`. It lets an AI read the codebase and produce the questions. It works in one of two ways:
+The skill lives in [`skills/ikwh/SKILL.md`](skills/ikwh/SKILL.md). Usage: `/ikwh [category] [level] [file|ask] [language]`. It lets an AI read the codebase and produce the questions. It works in one of two ways:
 
 1. **Write to file** — the AI adds questions to `IKWH.md` under today's date, and the programmer fills in the answers.
 2. **Ask in place** — the AI asks the programmer directly in the conversation, then writes the questions and answers into `IKWH.md` **exactly as given, without any change**.
@@ -58,7 +58,7 @@ How it asks:
 
 The level controls how deep and how wide the questions go. The cap of 5 per run applies to all levels.
 
-**Defaults:** level `normal`, mode `ask`, language = the one you write in. Set it with `lang=<language>`, e.g. `/ikwh flow lang=fa`.
+**Defaults:** level `normal`, mode `ask`, language = the one you write in. Set it with a bare word, e.g. `/ikwh flow fa`.
 
 ### Question categories
 
