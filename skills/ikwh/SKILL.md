@@ -15,7 +15,7 @@ You are a teammate helping the programmer understand their own codebase, startin
   If omitted (or the user wrote `help`), do not start yet: show the Categories table below plus the levels and modes with their defaults (one line each), and ask which category to use. The reply can be as short as `flow`, or `flow strict file`.
 - **level**: `light` | `normal` | `strict`. Default: `normal`. See Levels.
 - **mode**: `file` (write unanswered questions to the file) | `ask` (ask in conversation) | `review` (give feedback on today's answers already in the file). Default: `ask`.
-- **language**: the language you speak with the programmer, as a bare word, e.g. `fa`, `persian`, `english`. Default: the language of the user's message. Questions, explanations, and menus use it. The file markers (`**Q (category):**`, `Files:`, `**A:**`, date headings) always stay as is.
+- **language**: the language you speak with the programmer, as a bare word, e.g. `fa`, `persian`, `english`. Default: the language of the user's message. Questions, explanations, and menus use it. The labels in the file ("Question", "Answer") use it too; the category id and date headings stay as is.
 
 ## Categories
 
@@ -62,7 +62,7 @@ Within a category, go top-down and never skip a layer:
 2. **First run** (no answers in the file yet): ask once, "Do you already know this project, or should I give you a short map first?" If they want the map, give 5 to 10 lines of high-level design in the conversation (never in the file), then continue.
 3. Build the candidate list:
    - **New**: things in the code, within the category and level, with no question yet.
-   - **Changed**: answered questions whose `Files:` changed since the date of their section (`git log --since=<date> -- <files>`). Offer a refresh in a friendly way ("This part changed since you wrote this; want to take another look?"). Ask again as new entries; never edit the old ones.
+   - **Changed**: answered questions whose subject in the code seems to have changed since the date of their section. Judge it yourself: find the relevant code, check `git log --since=<date>` for it, and read the answer against the current code. Offer a refresh in a friendly way ("This part changed since you wrote this; want to take another look?"). Ask again as new entries; never edit the old ones.
    - **Don't know**: answered "I don't know" in `file` mode. Handle these first, via the "I don't know" steps below, and replace that answer in place with the new one (the only allowed edit).
    - Skip questions that already exist with an empty answer.
 4. Order by the layers above.
@@ -73,16 +73,15 @@ Within a category, go top-down and never skip a layer:
 ```markdown
 ## 2026-10-10
 
-**Q (flow):** What happens when a payment webhook is delivered twice?
-Files: src/payments/webhook.ts
-**A:** <the programmer's words, verbatim>
+**Question (flow):** What happens when a payment webhook is delivered twice?
+**Answer:** <the programmer's words, verbatim>
 ```
 
-`Files:` lists the files the question is about; it is how changes are detected.
+The labels are full words ("Question", "Answer") **in the chosen language**, e.g. `**سؤال (flow):**` and `**جواب:**` for Persian. The category id (`flow`) and the date heading stay as is. When reading an existing file, accept labels in any language: in each entry the first bold label is the question and the next is the answer. For new entries use the current language.
 
 ## Modes
 
-- **file**: write each question with an empty `**A:**` for the programmer to fill in. Do not answer.
+- **file**: write each question with an empty answer label for the programmer to fill in. Do not answer.
 - **ask**: ask one question at a time in the conversation. After each reply, give Feedback (below), then append the question and the final answer to `IKWH.md` **exactly as typed: no edits, no fixing typos, no rewording, no summarising**.
 - **review**: for each answered question under today's heading, give Feedback in the conversation. The programmer may then edit their answer in the file by hand. You never edit it.
 

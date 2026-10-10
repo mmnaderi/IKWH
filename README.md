@@ -25,16 +25,14 @@ You don't know the codebase line by line. This happens in two cases:
 
 ## 2026-10-10
 
-**Q (flow):** What happens when a payment webhook is delivered twice?
-Files: src/payments/webhook.ts
-**A:** (the programmer's answer)
+**Question (flow):** What happens when a payment webhook is delivered twice?
+**Answer:** (the programmer's answer)
 
-**Q (security):** Why does the auth module read the session from a cookie, not a header?
-Files: src/auth/session.ts
-**A:** (the programmer's answer)
+**Question (security):** Why does the auth module read the session from a cookie, not a header?
+**Answer:** (the programmer's answer)
 ```
 
-Each question lists the files it is about (`Files:`), so the skill can tell when it has become stale.
+The labels (`Question`, `Answer`) are written in the language you chose. For example, in Persian they are `سؤال` and `جواب`.
 
 Newest date first or last — pick one and stay consistent.
 
@@ -95,6 +93,7 @@ Each category is an argument of the skill, e.g. `/ikwh flow`. Run `/ikwh` alone 
 
 ## Version
 
+- **v0.1.5** — Removed the `Files:` line; `Question` / `Answer` labels are full words in the chosen language; added the "When to use it" section.
 - **v0.1.4** — Feedback after every answer (right, missing, key points; optional rewrite) and a `review` mode.
 - **v0.1.3** — Top-down questions (big picture first), levels by depth (HLD by default), a teammate tone, a first-run map, and a header line in `IKWH.md`.
 - **v0.1.2** — Added the `ikwh` skill (categories, levels, modes, language, "I don't know" flow).
