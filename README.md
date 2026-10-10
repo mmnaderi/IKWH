@@ -82,4 +82,6 @@ Each category is an argument of the skill, e.g. `/ikwh flow`. Run `/ikwh` alone 
 
 ## Version
 
-v0.1.0 — the idea. The skill was added after the tag.
+- **v0.1.2** — Added the `ikwh` skill (categories, levels, modes, language, "I don't know" flow).
+- **v0.1.1** — Added the typing rule, strictness levels, question cap and ordering, and question categories.
+- **v0.1.0** — The idea: the `IKWH.md` file and this README.
