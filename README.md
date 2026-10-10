@@ -26,6 +26,8 @@ Files: src/auth/session.ts
 **A:** (the programmer's answer)
 ```
 
+Each question lists the files it is about (`Files:`), so the skill can tell when it has become stale.
+
 Newest date first or last — pick one and stay consistent.
 
 ## The one rule
@@ -74,12 +76,10 @@ Each category is an argument of the skill, e.g. `/ikwh flow`. Run `/ikwh` alone 
 | `/ikwh run` | How it is built, configured, deployed, and run. |
 | `/ikwh ops` | What happens when things go wrong: logging, monitoring, alerts, retries, and how you find out and recover. |
 
-Each question lists the files it is about (`Files:`), so the skill can tell when it has become stale.
-
 ## Name
 
 **IKWH** = **I** **K**now **W**hat's **H**appening. The file is `IKWH.md`.
 
 ## Version
 
-v0.1.0 — the idea. Changes after the tag include the skill.
+v0.1.0 — the idea. The skill was added after the tag.

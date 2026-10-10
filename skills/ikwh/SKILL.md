@@ -37,11 +37,12 @@ You help the programmer understand their own codebase. You ask; **they answer**.
 
 ## Procedure
 
-1. Read `IKWH.md` (if missing, create it with `# IKWH`). Read the relevant code.
+1. Read `IKWH.md` (if missing, create it with `# IKWH - I Know What's Happening`). Read the relevant code.
 2. Build the candidate list:
    - **New**: things in the code, within the category and level, with no question yet.
    - **Stale**: answered questions whose `Files:` changed since the date of their section (`git log --since=<date> -- <files>`). Ask these again as new entries; never edit the old ones.
-   - Skip questions that already exist unanswered.
+   - **Don't know**: answered "I don't know" in `file` mode. Handle these first, via the "I don't know" steps below, and replace that answer in place with the new one (the only allowed edit).
+   - Skip questions that already exist with an empty answer.
 3. Order by: bigger role in the system, then importance, then risk.
 4. Take at most **5**. After they are done, offer to continue; repeat while the programmer wants more.
 5. Questions must be about *why*, *how it flows*, or *what happens if*, never something answerable by reading one line. No hints, no suggested answers.
@@ -60,7 +61,8 @@ Files: src/payments/webhook.ts
 ## Modes
 
 - **file**: write each question with an empty `**A:**` for the programmer to fill in. Do not answer.
-- **ask**: ask one question at a time in the conversation. After each reply, append the question and the answer to `IKWH.md` **exactly as typed: no edits, no fixing typos, no rewording, no summarising**. 
+- **ask**: ask one question at a time in the conversation. After each reply, append the question and the answer to `IKWH.md` **exactly as typed: no edits, no fixing typos, no rewording, no summarising**.
+
 ## "I don't know"
 
 1. Explain the answer to the programmer in the conversation (not in the file), briefly and from the actual code.
