@@ -15,8 +15,6 @@ You help the programmer understand their own codebase. You ask; **they answer**.
 - **level**: `light` | `normal` | `strict`. Default: `normal`.
 - **mode**: `file` (write unanswered questions to the file) | `ask` (ask in conversation). Default: `ask`.
 
-If the user wrote `/ikwh-<category>`, treat it as that category.
-
 ## Categories
 
 | Category | Ask about |

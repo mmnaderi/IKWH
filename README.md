@@ -37,7 +37,7 @@ No AI-written answers, no pasted text, no AI "polishing".
 
 ## The skill
 
-The skill lives in [`skills/ikwh/SKILL.md`](skills/ikwh/SKILL.md). Usage: `/ikwh [category] [level] [file|ask]`, or `/ikwh-<category>`. It lets an AI read the codebase and produce the questions. It works in one of two ways:
+The skill lives in [`skills/ikwh/SKILL.md`](skills/ikwh/SKILL.md). Usage: `/ikwh [category] [level] [file|ask]`. It lets an AI read the codebase and produce the questions. It works in one of two ways:
 
 1. **Write to file** — the AI adds questions to `IKWH.md` under today's date, and the programmer fills in the answers.
 2. **Ask in place** — the AI asks the programmer directly in the conversation, then writes the questions and answers into `IKWH.md` **exactly as given, without any change**.
@@ -60,17 +60,17 @@ The level controls how deep and how wide the questions go. The cap of 5 per run 
 
 ### Question categories
 
-Each category is a skill command:
+Each category is an argument of the skill, e.g. `/ikwh flow`:
 
-| Command | Asks about |
+| Usage | Asks about |
 |---|---|
-| `/ikwh-stack` | Languages, frameworks, services, and dependencies: what we use and why. |
-| `/ikwh-flow` | How a request or piece of data travels through the system, start to finish. |
-| `/ikwh-architecture` | The main parts, how they fit together, and why they are shaped this way. |
-| `/ikwh-data` | What data is stored, where, who can change it, and what must always be true. |
-| `/ikwh-security` | Who can do what, where secrets live, and what is exposed. |
-| `/ikwh-run` | How it is built, configured, deployed, and run. |
-| `/ikwh-ops` | What happens when things go wrong: logging, monitoring, alerts, retries, and how you find out and recover. |
+| `/ikwh stack` | Languages, frameworks, services, and dependencies: what we use and why. |
+| `/ikwh flow` | How a request or piece of data travels through the system, start to finish. |
+| `/ikwh architecture` | The main parts, how they fit together, and why they are shaped this way. |
+| `/ikwh data` | What data is stored, where, who can change it, and what must always be true. |
+| `/ikwh security` | Who can do what, where secrets live, and what is exposed. |
+| `/ikwh run` | How it is built, configured, deployed, and run. |
+| `/ikwh ops` | What happens when things go wrong: logging, monitoring, alerts, retries, and how you find out and recover. |
 
 Each question lists the files it is about (`Files:`), so the skill can tell when it has become stale.
 
