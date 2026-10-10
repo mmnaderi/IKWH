@@ -47,19 +47,22 @@ The skill lives in [`skills/ikwh/SKILL.md`](skills/ikwh/SKILL.md). Usage: `/ikwh
 
 How it asks:
 
-- **Only new and stale questions.** It never regenerates everything. A question is *stale* when the code it was about has changed since it was answered.
-- **Ordered by** bigger role in the system, then importance, then risk.
+- **A teammate, not an examiner.** No grading, no trick questions. "I don't know" is a normal answer.
+- **Big picture first.** Questions go from the overview to the details, one layer at a time: overview, inventory, roles, then (in `strict`) why and failure cases. Early questions are open and name nothing; you supply the names.
+- **Only new and changed questions.** It never regenerates everything. If the code behind an answer changed since you wrote it, the skill offers a refresh.
+- **First run help.** If you don't know the project yet, the skill can give you a short map of the high-level design first (it is never written into the file).
+- Within a layer: bigger role in the system first, then importance, then risk.
 - **At most 5 questions per run.** The programmer can ask for more and continue as long as they want.
 
 ### Strictness levels
 
 | Level | Meaning |
 |---|---|
-| `light` | Only the most central parts of the codebase. |
-| `normal` | Central parts plus anything important or risky. |
-| `strict` | Everything that matters, including edge cases and failure paths. |
+| `light` | What the project is and for whom; its main parts. |
+| `normal` | The full high-level design: main parts, how they connect, the main data path, where data lives, how it runs. |
+| `strict` | Inside each part: edge cases, failures, and smaller design decisions. |
 
-The level controls how deep and how wide the questions go. The cap of 5 per run applies to all levels.
+The level is how deep the questions go. The cap of 5 per run applies to all levels.
 
 **Defaults:** level `normal`, mode `ask`, language = the one you write in. Set it with a bare word, e.g. `/ikwh flow fa`.
 
@@ -83,6 +86,7 @@ Each category is an argument of the skill, e.g. `/ikwh flow`. Run `/ikwh` alone 
 
 ## Version
 
+- **v0.1.3** — Top-down questions (big picture first), levels by depth (HLD by default), a teammate tone, a first-run map, and a header line in `IKWH.md`.
 - **v0.1.2** — Added the `ikwh` skill (categories, levels, modes, language, "I don't know" flow).
 - **v0.1.1** — Added the typing rule, strictness levels, question cap and ordering, and question categories.
 - **v0.1.0** — The idea: the `IKWH.md` file and this README.

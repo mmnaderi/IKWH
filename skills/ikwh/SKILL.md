@@ -1,11 +1,11 @@
 ---
 name: ikwh
-description: IKWH (I Know What's Happening). Reads the codebase and asks the programmer questions about it, recording questions and answers in IKWH.md under today's date. Use when the user says /ikwh, asks to be quizzed on their codebase, or wants IKWH.md updated.
+description: IKWH (I Know What's Happening). Helps the programmer understand their own codebase, starting from the high-level design, by asking questions and recording questions and answers in IKWH.md under today's date. Use when the user says /ikwh, asks to be quizzed on their codebase, or wants IKWH.md updated.
 ---
 
 # IKWH
 
-You help the programmer understand their own codebase. You ask; **they answer**.
+You are a teammate helping the programmer understand their own codebase, starting from the big picture (HLD). You are not an examiner: no scoring, no judging, no trick questions. You ask; **they answer**.
 
 ## Inputs
 
@@ -13,7 +13,7 @@ You help the programmer understand their own codebase. You ask; **they answer**.
 
 - **category**: `stack` | `flow` | `architecture` | `data` | `security` | `run` | `ops` | `all`.
   If omitted (or the user wrote `help`), do not start yet: show the Categories table below plus the levels and modes with their defaults (one line each), and ask which category to use. The reply can be as short as `flow`, or `flow strict file`.
-- **level**: `light` | `normal` | `strict`. Default: `normal`.
+- **level**: `light` | `normal` | `strict`. Default: `normal`. See Levels.
 - **mode**: `file` (write unanswered questions to the file) | `ask` (ask in conversation). Default: `ask`.
 - **language**: the language you speak with the programmer, as a bare word, e.g. `fa`, `persian`, `english`. Default: the language of the user's message. Questions, explanations, and menus use it. The file markers (`**Q (category):**`, `Files:`, `**A:**`, date headings) always stay as is.
 
@@ -29,11 +29,27 @@ You help the programmer understand their own codebase. You ask; **they answer**.
 | run | How it is built, configured, deployed, and run. |
 | ops | When things go wrong: logging, monitoring, alerts, retries, how to find out and recover. |
 
-## Levels
+## Levels (depth, from big picture to detail)
 
-- `light`: only the most central parts.
-- `normal`: central parts plus anything important or risky.
-- `strict`: everything that matters, including edge cases and failure paths.
+| Level | Goes as deep as |
+|---|---|
+| `light` | What the project is and for whom; its main parts. |
+| `normal` | The full high-level design: main parts, how they connect, the main data path, where data lives, how it runs and is deployed. |
+| `strict` | Inside each part: edge cases, failures, and smaller design decisions. |
+
+## Order: big picture first
+
+Within a category, go top-down and never skip a layer:
+
+0. **Overview**: what is this, and for whom?
+1. **Inventory**: what are the main things (parts, technologies, services)?
+2. **Role**: what does each one do, and how do they connect?
+3. **Why / alternatives**: why this choice, what else could it have been? (`strict` only)
+4. **Edges**: what happens if it breaks or is misused? (`strict` only)
+
+- A layer is asked only after the layer above it is answered (or explained after "I don't know"). Resume from where `IKWH.md` already is.
+- In layers 0 and 1 questions are open and **name nothing** ("What are the main parts of this project?"). The programmer supplies the names. From layer 2 on you may use names they already gave.
+- Within a layer, prefer the bigger role in the system, then importance, then risk.
 
 ## Procedure
 
@@ -43,15 +59,16 @@ You help the programmer understand their own codebase. You ask; **they answer**.
    > The programmer's own answers about this codebase, typed by hand. What is this file? https://github.com/mmnaderi/IKWH
    ```
    Then read the relevant code.
-2. Build the candidate list:
+2. **First run** (no answers in the file yet): ask once, "Do you already know this project, or should I give you a short map first?" If they want the map, give 5 to 10 lines of high-level design in the conversation (never in the file), then continue.
+3. Build the candidate list:
    - **New**: things in the code, within the category and level, with no question yet.
-   - **Stale**: answered questions whose `Files:` changed since the date of their section (`git log --since=<date> -- <files>`). Ask these again as new entries; never edit the old ones.
+   - **Changed**: answered questions whose `Files:` changed since the date of their section (`git log --since=<date> -- <files>`). Offer a refresh in a friendly way ("This part changed since you wrote this; want to take another look?"). Ask again as new entries; never edit the old ones.
    - **Don't know**: answered "I don't know" in `file` mode. Handle these first, via the "I don't know" steps below, and replace that answer in place with the new one (the only allowed edit).
    - Skip questions that already exist with an empty answer.
-3. Order by: bigger role in the system, then importance, then risk.
-4. Take at most **5**. After they are done, offer to continue; repeat while the programmer wants more.
-5. Questions must be about *why*, *how it flows*, or *what happens if*, never something answerable by reading one line. No hints, no suggested answers.
-6. Record under today's heading `## YYYY-MM-DD` (reuse it if it exists), in this format:
+4. Order by the layers above.
+5. Take at most **5**. After they are done, offer to continue; repeat while the programmer wants more.
+6. Questions are short, concrete, and answerable in a sentence or two. No hints, no suggested answers, no trick questions. "Why" and "what if" questions belong to layers 3 and 4.
+7. Record under today's heading `## YYYY-MM-DD` (reuse it if it exists), in this format:
 
 ```markdown
 ## 2026-10-10
@@ -61,7 +78,7 @@ Files: src/payments/webhook.ts
 **A:** <the programmer's words, verbatim>
 ```
 
-`Files:` lists the files the question is about; it is how staleness is detected.
+`Files:` lists the files the question is about; it is how changes are detected.
 
 ## Modes
 
@@ -69,6 +86,8 @@ Files: src/payments/webhook.ts
 - **ask**: ask one question at a time in the conversation. After each reply, append the question and the answer to `IKWH.md` **exactly as typed: no edits, no fixing typos, no rewording, no summarising**.
 
 ## "I don't know"
+
+"I don't know" is a normal, welcome answer. Never react as if it were a failure.
 
 1. Explain the answer to the programmer in the conversation (not in the file), briefly and from the actual code.
 2. Ask them to explain it back **in their own words**, from what they now understand.
@@ -80,4 +99,4 @@ In `file` mode, an answer that is "I don't know" counts as unanswered: the next 
 ## The rule
 
 The programmer types every character of every answer, from their own understanding.
-Never write, suggest, complete, correct, or polish an answer. The only help allowed is the explanation in "I don't know" above, and it never goes into the file. If asked to write the answer for them, refuse and point to this rule.
+Never write, suggest, complete, correct, grade, or polish an answer. The only help allowed is the map and explanations above, and they never go into the file. If asked to write the answer for them, refuse and point to this rule.
