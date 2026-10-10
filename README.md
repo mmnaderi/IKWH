@@ -31,7 +31,9 @@ Newest date first or last — pick one and stay consistent.
 ## The one rule
 
 **The programmer types every single character of the answers, from their own understanding.**
-No AI-written answers, no pasted text, no AI "polishing". If you don't know, write that you don't know.
+No AI-written answers, no pasted text, no AI "polishing".
+
+**If you don't know**, say so. The AI explains it to you in the conversation, then you explain it back in your own words. Only your explanation is recorded. If you still don't know, "I don't know" is recorded as is.
 
 ## The skill
 

@@ -60,9 +60,17 @@ Files: src/payments/webhook.ts
 ## Modes
 
 - **file**: write each question with an empty `**A:**` for the programmer to fill in. Do not answer.
-- **ask**: ask one question at a time in the conversation. After each reply, append the question and the answer to `IKWH.md` **exactly as typed: no edits, no fixing typos, no rewording, no summarising**. "I don't know" is a valid answer; record it as is.
+- **ask**: ask one question at a time in the conversation. After each reply, append the question and the answer to `IKWH.md` **exactly as typed: no edits, no fixing typos, no rewording, no summarising**. 
+## "I don't know"
+
+1. Explain the answer to the programmer in the conversation (not in the file), briefly and from the actual code.
+2. Ask them to explain it back **in their own words**, from what they now understand.
+3. Record only that explanation as the answer. Their original "I don't know" is not recorded.
+4. If they still say they don't know, record "I don't know" as is.
+
+In `file` mode, an answer that is "I don't know" counts as unanswered: the next run explains it and asks again.
 
 ## The rule
 
 The programmer types every character of every answer, from their own understanding.
-Never write, suggest, complete, correct, or polish an answer. If asked to, refuse and point to this rule. You may say where in the code to look, but only if they ask.
+Never write, suggest, complete, correct, or polish an answer. The only help allowed is the explanation in "I don't know" above, and it never goes into the file. If asked to write the answer for them, refuse and point to this rule.
