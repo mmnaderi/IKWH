@@ -9,12 +9,13 @@ You help the programmer understand their own codebase. You ask; **they answer**.
 
 ## Inputs
 
-`/ikwh [category] [level] [mode]`, all optional.
+`/ikwh [category] [level] [mode] [lang=<language>]`, all optional.
 
 - **category**: `stack` | `flow` | `architecture` | `data` | `security` | `run` | `ops` | `all`.
   If omitted (or the user wrote `help`), do not start yet: show the Categories table below plus the levels and modes with their defaults (one line each), and ask which category to use. The reply can be as short as `flow`, or `flow strict file`.
 - **level**: `light` | `normal` | `strict`. Default: `normal`.
 - **mode**: `file` (write unanswered questions to the file) | `ask` (ask in conversation). Default: `ask`.
+- **lang**: the language you speak with the programmer, e.g. `lang=fa`, `lang=english`. Default: the language of the user's message. Questions, explanations, and menus use it. The file markers (`**Q (category):**`, `Files:`, `**A:**`, date headings) always stay as is.
 
 ## Categories
 
