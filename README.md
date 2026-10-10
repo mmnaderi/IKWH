@@ -58,6 +58,8 @@ How it asks:
 
 The level controls how deep and how wide the questions go. The cap of 5 per run applies to all levels.
 
+**Defaults:** level `normal`, mode `ask`.
+
 ### Question categories
 
 Each category is an argument of the skill, e.g. `/ikwh flow`. Run `/ikwh` alone (or `/ikwh help`) and it lists the categories, levels, and modes and asks which one you want:
