@@ -11,7 +11,8 @@ You help the programmer understand their own codebase. You ask; **they answer**.
 
 `/ikwh [category] [level] [mode]`, all optional.
 
-- **category**: `stack` | `flow` | `architecture` | `data` | `security` | `run` | `ops`. Default: any.
+- **category**: `stack` | `flow` | `architecture` | `data` | `security` | `run` | `ops` | `all`.
+  If omitted (or the user wrote `help`), do not start yet: show the Categories table below plus the levels and modes with their defaults (one line each), and ask which category to use. The reply can be as short as `flow`, or `flow strict file`.
 - **level**: `light` | `normal` | `strict`. Default: `normal`.
 - **mode**: `file` (write unanswered questions to the file) | `ask` (ask in conversation). Default: `ask`.
 
