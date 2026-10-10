@@ -13,7 +13,7 @@ AI agents write more and more of our code. The programmer's role moves from writ
 `IKWH.md` lives in the repository root. Each section heading is a **date**, and the section holds that day's **programmer notes**: the questions asked and the answers given.
 
 ```markdown
-# IKWH
+# IKWH - I Know What's Happening
 
 ## 2026-10-10
 
@@ -26,14 +26,46 @@ AI agents write more and more of our code. The programmer's role moves from writ
 
 Newest date first or last — pick one and stay consistent.
 
+## The one rule
+
+**The programmer types every single character of the answers, from their own understanding.**
+No AI-written answers, no pasted text, no AI "polishing". If you don't know, write that you don't know.
+
 ## The skill (planned)
 
-A skill will let an AI read the codebase and produce the questions. It runs in a chosen **strictness level**, and works in one of two ways:
+A skill will let an AI read the codebase and produce the questions. It works in one of two ways:
 
 1. **Write to file** — the AI adds questions to `IKWH.md` under today's date, and the programmer fills in the answers.
 2. **Ask in place** — the AI asks the programmer directly in the conversation, then writes the questions and answers into `IKWH.md` **exactly as given, without any change**.
 
-The strictness level controls how many questions are asked and how deep they go.
+How it asks:
+
+- **Only new and stale questions.** It never regenerates everything. A question is *stale* when the code it was about has changed since it was answered.
+- **Ordered by** bigger role in the system, then importance, then risk.
+- **At most 5 questions per run.** The programmer can ask for more and continue as long as they want.
+
+### Strictness levels
+
+| Level | Meaning |
+|---|---|
+| `light` | Only the most central parts of the codebase. |
+| `normal` | Central parts plus anything important or risky. |
+| `strict` | Everything that matters, including edge cases and failure paths. |
+
+The level controls how deep and how wide the questions go. The cap of 5 per run applies to all levels.
+
+### Question categories
+
+Each category is a skill command:
+
+| Command | Asks about |
+|---|---|
+| `/ikwh-stack` | Languages, frameworks, services, and dependencies: what we use and why. |
+| `/ikwh-flow` | How a request or piece of data travels through the system, start to finish. |
+| `/ikwh-architecture` | The main parts, how they fit together, and why they are shaped this way. |
+| `/ikwh-data` | What data is stored, where, who can change it, and what must always be true. |
+| `/ikwh-security` | Who can do what, where secrets live, and what is exposed. |
+| `/ikwh-ops` | What happens when things go wrong: logging, monitoring, alerts, retries, and how you find out and recover. |
 
 The skill is not part of this version.
 
