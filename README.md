@@ -17,10 +17,12 @@ AI agents write more and more of our code. The programmer's role moves from writ
 
 ## 2026-10-10
 
-**Q:** What happens when a payment webhook is delivered twice?
+**Q (flow):** What happens when a payment webhook is delivered twice?
+Files: src/payments/webhook.ts
 **A:** (the programmer's answer)
 
-**Q:** Why does the auth module read the session from a cookie, not a header?
+**Q (security):** Why does the auth module read the session from a cookie, not a header?
+Files: src/auth/session.ts
 **A:** (the programmer's answer)
 ```
 
@@ -31,9 +33,9 @@ Newest date first or last — pick one and stay consistent.
 **The programmer types every single character of the answers, from their own understanding.**
 No AI-written answers, no pasted text, no AI "polishing". If you don't know, write that you don't know.
 
-## The skill (planned)
+## The skill
 
-A skill will let an AI read the codebase and produce the questions. It works in one of two ways:
+The skill lives in [`skills/ikwh/SKILL.md`](skills/ikwh/SKILL.md). Usage: `/ikwh [category] [level] [file|ask]`, or `/ikwh-<category>`. It lets an AI read the codebase and produce the questions. It works in one of two ways:
 
 1. **Write to file** — the AI adds questions to `IKWH.md` under today's date, and the programmer fills in the answers.
 2. **Ask in place** — the AI asks the programmer directly in the conversation, then writes the questions and answers into `IKWH.md` **exactly as given, without any change**.
@@ -65,9 +67,10 @@ Each category is a skill command:
 | `/ikwh-architecture` | The main parts, how they fit together, and why they are shaped this way. |
 | `/ikwh-data` | What data is stored, where, who can change it, and what must always be true. |
 | `/ikwh-security` | Who can do what, where secrets live, and what is exposed. |
+| `/ikwh-run` | How it is built, configured, deployed, and run. |
 | `/ikwh-ops` | What happens when things go wrong: logging, monitoring, alerts, retries, and how you find out and recover. |
 
-The skill is not part of this version.
+Each question lists the files it is about (`Files:`), so the skill can tell when it has become stale.
 
 ## Name
 
@@ -75,4 +78,4 @@ The skill is not part of this version.
 
 ## Version
 
-v0.1.0 — the idea.
+v0.1.0 — the idea. Changes after the tag include the skill.
