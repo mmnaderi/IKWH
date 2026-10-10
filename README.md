@@ -40,14 +40,16 @@ No AI-written answers, no pasted text, no AI "polishing".
 
 ## The skill
 
-The skill lives in [`skills/ikwh/SKILL.md`](skills/ikwh/SKILL.md). Usage: `/ikwh [category] [level] [file|ask] [language]`. It lets an AI read the codebase and produce the questions. It works in one of two ways:
+The skill lives in [`skills/ikwh/SKILL.md`](skills/ikwh/SKILL.md). Usage: `/ikwh [category] [level] [file|ask] [language]`. It lets an AI read the codebase and produce the questions. It works in one of three ways:
 
-1. **Write to file** — the AI adds questions to `IKWH.md` under today's date, and the programmer fills in the answers.
-2. **Ask in place** — the AI asks the programmer directly in the conversation, then writes the questions and answers into `IKWH.md` **exactly as given, without any change**.
+1. **Write to file** (`file`) — the AI adds questions to `IKWH.md` under today's date, and the programmer fills in the answers.
+2. **Ask in place** (`ask`) — the AI asks the programmer directly in the conversation, then writes the questions and answers into `IKWH.md` **exactly as given, without any change**.
+3. **Review** (`review`) — the AI gives feedback in the conversation on the answers already in the file.
 
 How it asks:
 
-- **A teammate, not an examiner.** No grading, no trick questions. "I don't know" is a normal answer.
+- **A teammate, not an examiner.** No scores, no trick questions. "I don't know" is a normal answer.
+- **Feedback after every answer**, in the conversation only: what was right, what was missing or inexact (with a pointer into the code), and any important point you missed. You may then rewrite your answer in your own words; only the final version is recorded.
 - **Big picture first.** Questions go from the overview to the details, one layer at a time: overview, inventory, roles, then (in `strict`) why and failure cases. Early questions are open and name nothing; you supply the names.
 - **Only new and changed questions.** It never regenerates everything. If the code behind an answer changed since you wrote it, the skill offers a refresh.
 - **First run help.** If you don't know the project yet, the skill can give you a short map of the high-level design first (it is never written into the file).
@@ -86,6 +88,7 @@ Each category is an argument of the skill, e.g. `/ikwh flow`. Run `/ikwh` alone 
 
 ## Version
 
+- **v0.1.4** — Feedback after every answer (right, missing, key points; optional rewrite) and a `review` mode.
 - **v0.1.3** — Top-down questions (big picture first), levels by depth (HLD by default), a teammate tone, a first-run map, and a header line in `IKWH.md`.
 - **v0.1.2** — Added the `ikwh` skill (categories, levels, modes, language, "I don't know" flow).
 - **v0.1.1** — Added the typing rule, strictness levels, question cap and ordering, and question categories.
