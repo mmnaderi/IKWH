@@ -8,6 +8,13 @@ AI agents write more and more of our code. The programmer's role moves from writ
 
 `IKWH.md` is the place where the programmer sits down and answers questions about the codebase, in their own words.
 
+## When to use it
+
+You don't know the codebase line by line. This happens in two cases:
+
+- **You are building the project with AI agents (agentic coding).** The code grows faster than your understanding. Run `/ikwh` as you go to keep up with what the agents built.
+- **You are joining an existing project.** Run `/ikwh` to get familiar with it, from the big picture down to the details.
+
 ## The file
 
 `IKWH.md` lives in the repository root. Each section heading is a **date**, and the section holds that day's **programmer notes**: the questions asked and the answers given.
