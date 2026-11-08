@@ -79,7 +79,7 @@ Within a category, go top-down and never skip a layer:
 ## 2026-10-10
 
 ### What happens when a payment webhook is delivered twice?
-<the programmer's words, verbatim>
+<the programmer's answer>
 ```
 
 Each question is a `###` heading with the answer directly below it, with no "Question" or "Answer" labels. When reading an existing file, also accept older bold-label entries in any language.
@@ -87,7 +87,7 @@ Each question is a `###` heading with the answer directly below it, with no "Que
 ## Modes
 
 - **file**: write each `###` question heading with a blank line below it for the programmer to fill in. Do not answer.
-- **ask**: ask one question at a time in the conversation. After each reply, give Feedback (below), then append the question and the final answer to `IKWH.md` **exactly as typed: no edits, no fixing typos, no rewording, no summarising**.
+- **ask**: ask one question at a time in the conversation. After each reply, give Feedback (below), then append the question and the final answer to `IKWH.md`. You may fix typos and punctuation and apply Markdown formatting (code spans, lists, paragraphs), while keeping the programmer's phrasing and content unchanged.
 - **review**: for each answered question under today's heading, give Feedback in the conversation. The programmer may then edit their answer in the file by hand. You never edit it.
 
 ## Feedback
@@ -117,5 +117,5 @@ In `file` mode, an answer that is "I don't know" counts as unanswered: the next 
 
 ## The rule
 
-The programmer types every character of every answer, from their own understanding.
-Never write, suggest, complete, correct, or polish an answer. The only help allowed is the map, explanations, and feedback above, and they never go into the file. If asked to write the answer for them, refuse and point to this rule.
+Every answer comes from the programmer's own understanding, in their own words.
+Never write, suggest, complete, reword, summarise, or change the meaning of an answer (not even to fix a technical mistake). When recording an answer, you may only fix typos and punctuation and apply Markdown formatting (code spans, lists, paragraphs), keeping the programmer's phrasing intact. The only other help allowed is the map, explanations, and feedback above, and they never go into the file. If asked to write the answer for them, refuse and point to this rule.

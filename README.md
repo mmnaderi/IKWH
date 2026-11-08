@@ -38,8 +38,8 @@ Newest date first or last — pick one and stay consistent.
 
 ## The one rule
 
-**The programmer types every single character of the answers, from their own understanding.**
-No AI-written answers, no pasted text, no AI "polishing".
+**Every answer comes from the programmer's own understanding, in their own words.**
+No AI-written answers, no pasted text. When recording an answer, the AI may fix typos and punctuation and add light Markdown formatting (code spans, lists, paragraphs), without changing the phrasing or content.
 
 **If you don't know**, say so. The AI explains it to you in the conversation, then you explain it back in your own words. Only your explanation is recorded. If you still don't know, "I don't know" is recorded as is.
 
@@ -48,7 +48,7 @@ No AI-written answers, no pasted text, no AI "polishing".
 The skill lives in [`skills/ikwh/SKILL.md`](skills/ikwh/SKILL.md). Usage: `/ikwh [category] [level] [file|ask] [language]`. It lets an AI read the codebase and produce the questions. It works in one of three ways:
 
 1. **Write to file** (`file`) — the AI adds questions to `IKWH.md` under today's date, and the programmer fills in the answers.
-2. **Ask in place** (`ask`) — the AI asks the programmer directly in the conversation, then writes the questions and answers into `IKWH.md` **exactly as given, without any change**.
+2. **Ask in place** (`ask`) — the AI asks the programmer directly in the conversation, then records the questions and answers in `IKWH.md` (lightly cleaned up for typos, punctuation, and Markdown formatting, with no change to phrasing or content).
 3. **Review** (`review`) — the AI gives feedback in the conversation on the answers already in the file.
 
 How it asks:
@@ -96,6 +96,7 @@ The order is a path: if you are new to a project, go from 1 to 8. `/ikwh all` ru
 
 ## Version
 
+- **v0.1.8** — Allow light typo, punctuation, and Markdown formatting cleanup when recording answers, without changing phrasing or content.
 - **v0.1.7** — Questions are `###` headings with the answer directly below (no `Question` / `Answer` labels); Persian uses Solar Hijri date headings.
 - **v0.1.6** — Added the `structure` category and put the categories in a learning order (1 to 8).
 - **v0.1.5** — Removed the `Files:` line; `Question` / `Answer` labels are full words in the chosen language; added the "When to use it" section.
