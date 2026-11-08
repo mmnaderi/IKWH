@@ -25,14 +25,14 @@ You don't know the codebase line by line. This happens in two cases:
 
 ## 2026-10-10
 
-**Question (flow):** What happens when a payment webhook is delivered twice?
-**Answer:** (the programmer's answer)
+### What happens when a payment webhook is delivered twice?
+(the programmer's answer)
 
-**Question (security):** Why does the auth module read the session from a cookie, not a header?
-**Answer:** (the programmer's answer)
+### Why does the auth module read the session from a cookie, not a header?
+(the programmer's answer)
 ```
 
-The labels (`Question`, `Answer`) are written in the language you chose. For example, in Persian they are `سؤال` and `جواب`.
+In Persian, the date heading uses Solar Hijri (e.g. `## 1405-07-18`).
 
 Newest date first or last — pick one and stay consistent.
 
@@ -96,6 +96,7 @@ The order is a path: if you are new to a project, go from 1 to 8. `/ikwh all` ru
 
 ## Version
 
+- **v0.1.7** — Questions are `###` headings with the answer directly below (no `Question` / `Answer` labels); Persian uses Solar Hijri date headings.
 - **v0.1.6** — Added the `structure` category and put the categories in a learning order (1 to 8).
 - **v0.1.5** — Removed the `Files:` line; `Question` / `Answer` labels are full words in the chosen language; added the "When to use it" section.
 - **v0.1.4** — Feedback after every answer (right, missing, key points; optional rewrite) and a `review` mode.
